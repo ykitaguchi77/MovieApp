@@ -77,6 +77,7 @@ struct SendData: View {
             } else{
                 Button(action: {
                 showingAlert = false
+                GenerateHashID()
                 SaveToResultHolder()
                 //SendDataset()
                 SaveToDoc()
@@ -100,12 +101,24 @@ struct SendData: View {
     }
             
     
-
+    public func GenerateHashID(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.dateStyle = .medium
+        dateFormatter.dateFormat = "yyyyMMdd"
+        
+        //newdateid: 20211204-11223344-3
+        let newdateid = "\(dateFormatter.string(from:self.user.date))-\(self.user.id)-\(self.user.imageNum)"
+        let dateid = Data(newdateid.utf8)
+        let hashid = SHA256.hash(data: dateid)
+        user.hashid = hashid.compactMap { String(format: "%02x", $0) }.joined()
+        print(user.hashid)
+    }
     
     //ResultHolderにテキストデータを格納
     public func SaveToResultHolder(){
         //var imagenum: String = String(user.imageNum)
-        ResultHolder.GetInstance().SetAnswer(q1: self.stringDate(), q2: user.hashid, q3: user.id, q4: self.numToString(num: self.user.imageNum), q5: self.user.hospitals[user.selected_hospital], q6: user.free_disease)
+        ResultHolder.GetInstance().SetAnswer(q1: self.stringDate(), q2: user.hashid, q3: user.id, q4: self.numToString(num: self.user.imageNum), q5: self.user.hospitals[user.selected_hospital], q6: self.user.diseases[user.selected_disease], q7: user.free_disease)
     }
     
     public func stringDate()->String{

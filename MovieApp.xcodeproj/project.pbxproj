@@ -11,7 +11,6 @@
 		BF5E997727C46B7500C80A89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E997627C46B7500C80A89 /* ContentView.swift */; };
 		BF5E997927C46B7700C80A89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5E997827C46B7700C80A89 /* Assets.xcassets */; };
 		BF5E997C27C46B7700C80A89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5E997B27C46B7700C80A89 /* Preview Assets.xcassets */; };
-		BF5E997E27C46B7700C80A89 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E997D27C46B7700C80A89 /* Persistence.swift */; };
 		BF5E998127C46B7700C80A89 /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF5E997F27C46B7700C80A89 /* MovieApp.xcdatamodeld */; };
 		BF5E998827C46D8C00C80A89 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E998727C46D8C00C80A89 /* ImagePicker.swift */; };
 		BF5E998B27C46DEA00C80A89 /* MovieCropper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E998A27C46DEA00C80A89 /* MovieCropper.swift */; };
@@ -33,7 +32,6 @@
 		BF5E997627C46B7500C80A89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BF5E997827C46B7700C80A89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5E997B27C46B7700C80A89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BF5E997D27C46B7700C80A89 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BF5E998027C46B7700C80A89 /* MovieApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieApp.xcdatamodel; sourceTree = "<group>"; };
 		BF5E998727C46D8C00C80A89 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		BF5E998A27C46DEA00C80A89 /* MovieCropper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCropper.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				BF5E999C27C4942800C80A89 /* CameraView.swift */,
 				BF5E999E27C4945300C80A89 /* SendData.swift */,
 				BF5E997827C46B7700C80A89 /* Assets.xcassets */,
-				BF5E997D27C46B7700C80A89 /* Persistence.swift */,
 				BF5E997F27C46B7700C80A89 /* MovieApp.xcdatamodeld */,
 				BF5E997A27C46B7700C80A89 /* Preview Content */,
 			);
@@ -193,7 +190,6 @@
 				BF5E998B27C46DEA00C80A89 /* MovieCropper.swift in Sources */,
 				BF5E999D27C4942800C80A89 /* CameraView.swift in Sources */,
 				BF5E999527C479BF00C80A89 /* InformationView.swift in Sources */,
-				BF5E997E27C46B7700C80A89 /* Persistence.swift in Sources */,
 				BF5E999F27C4945300C80A89 /* SendData.swift in Sources */,
 				BF5E998D27C46E2B00C80A89 /* ResultHolder.swift in Sources */,
 				BF5E998827C46D8C00C80A89 /* ImagePicker.swift in Sources */,
