@@ -19,15 +19,14 @@ class User : ObservableObject {
     @Published var id: String = ""
     @Published var hashid: String = ""
     @Published var selected_gender: Int = -1
-    @Published var selected_hospital: Int = -1
+    @Published var selected_hospital: Int = 0
     @Published var selected_disease: Int = -1
-    @Published var movieType: Int = -1
+    @Published var movieType: Int = 0
     @Published var free_disease: String = ""
     @Published var gender: [String] = ["男", "女"]
-    @Published var YesNo: [String] = ["あり", "なし"]
-    @Published var diseases: [String] = ["コントロール", "甲状腺眼症", "眼瞼痙攣"]
-    @Published var hospitals: [String] = ["大阪大","Othersz"]
-    @Published var selected_movieType: [String] = ["Rotating", "Blinking"]
+    @Published var diseases: [String] = ["正常", "甲状腺眼症", "眼瞼痙攣"]
+    @Published var hospitals: [String] = ["", "大阪大"]
+    @Published var selected_movieType: [String] = ["", "Rotating", "Blinking"]
     @Published var imageNum: Int = 0 //写真の枚数（何枚目の撮影か）
     @Published var isNewData: Bool = false
     @Published var isSendData: Bool = false
@@ -81,7 +80,7 @@ struct ContentView: View {
             HStack{
                 
                 Button(action: {
-                    self.goRotate = true /*またはself.show.toggle() */
+                    self.goTakePhoto = true /*またはself.show.toggle() */
                     self.user.isSendData = false //撮影済みを解除
                     ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
                 }) {
@@ -91,6 +90,47 @@ struct ContentView: View {
                     }
                         .foregroundColor(Color.white)
                         .font(Font.largeTitle)
+                }
+                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                    .background(Color.black)
+                    .padding()
+                .sheet(isPresented: self.$goTakePhoto) {
+                        CameraPage(user: user)
+                }
+                
+                Button(action: {
+                    self.goTakePhoto = true /*またはself.show.toggle() */
+                    self.user.isSendData = false //撮影済みを解除
+                    ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
+                }) {
+                    HStack{
+                        Image(systemName: "eyebrow")
+                        Text("Blink")
+                    }
+                        .foregroundColor(Color.white)
+                        .font(Font.largeTitle)
+                }
+                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                    .background(Color.black)
+                    .padding()
+                .sheet(isPresented: self.$goTakePhoto) {
+                    CameraPage(user: user)
+                }
+            }
+            
+            HStack{
+                
+                Button(action: {
+                    self.goRotate = true /*またはself.show.toggle() */
+                    self.user.isSendData = false //撮影済みを解除
+                    ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
+                }) {
+                    HStack{
+                        Image(systemName: "questionmark.circle")
+                        Text("撮影方法")
+                    }
+                        .foregroundColor(Color.white)
+                        .font(Font.body)
                 }
                     .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
                     .background(Color.black)
@@ -105,11 +145,11 @@ struct ContentView: View {
                     ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
                 }) {
                     HStack{
-                        Image(systemName: "eyebrow")
-                        Text("Blink")
+                        Image(systemName: "questionmark.circle")
+                        Text("撮影方法")
                     }
                         .foregroundColor(Color.white)
-                        .font(Font.largeTitle)
+                        .font(Font.body)
                 }
                     .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
                     .background(Color.black)
@@ -119,7 +159,6 @@ struct ContentView: View {
                 }
             }
             
-
             //送信するとボタンの色が変わる演出
             if self.user.isSendData {
                 Button(action: {self.goSendData = true /*またはself.show.toggle() */}) {
@@ -134,7 +173,7 @@ struct ContentView: View {
                     .background(Color.blue)
                     .padding()
                 .sheet(isPresented: self.$goSendData) {
-                    //SendData(user: user)
+                    SendData(user: user)
                 }
             } else {
                 Button(action: { self.goSendData = true /*またはself.show.toggle() */ }) {
@@ -149,11 +188,9 @@ struct ContentView: View {
                     .background(Color.black)
                     .padding()
                 .sheet(isPresented: self.$goSendData) {
-                    //SendData(user: user)
+                    SendData(user: user)
                 }
             }
-            
-
             
             Button(action: { self.newPatient = true /*またはself.show.toggle() */ }) {
                 HStack{

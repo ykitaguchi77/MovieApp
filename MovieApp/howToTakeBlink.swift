@@ -27,11 +27,17 @@ struct HowToTakeBlink: View {
                 VStack(spacing:0){
                     ScrollView{
                         Group{
-                        Text("撮影方法")
+                        Text("Blink")
                             .font(.largeTitle)
                             .fontWeight(.black)
                             .padding(.bottom)
-                        Text("画面上部にあるカメラを固視")
+                        
+                        Text("①楕円形のガイドに顔の輪郭を合わせる")
+                            .font(.title2)
+                            .frame(width: bodyView.size.width, alignment: .leading)
+                            .padding(.bottom)
+                            
+                        Text("②画面上部にあるカメラを固視")
                             .font(.title2)
                             .frame(width: bodyView.size.width, alignment: .leading)
 
@@ -41,7 +47,7 @@ struct HowToTakeBlink: View {
                             .frame(width: bodyView.size.width)
                             .padding(.bottom)
 
-                        (Text("①安静状態")
+                        (Text("③安静状態で")
                         + Text("10秒間")
                             .underline(color: .white)
                         + Text("開瞼"))
@@ -50,13 +56,13 @@ struct HowToTakeBlink: View {
                             .padding(.top)
                             .padding(.bottom)
                             
-                        Text("③強瞬→開瞼を5回（1秒周期）")
+                        Text("④強瞬→開瞼を5回（1秒周期）")
                             .font(.title2)
                             .frame(width: bodyView.size.width, alignment: .leading)
                             .padding(.top)
                             .padding(.bottom)
 
-                        (Text("④安静状態で")
+                        (Text("⑤安静状態で")
                         + Text("10秒間")
                             .underline(color: .white)
                         + Text("開瞼"))
@@ -65,20 +71,20 @@ struct HowToTakeBlink: View {
                             .padding(.top)
                             .padding(.bottom)
                             
-                        Text("⑤軽い自発瞬目を5回（1秒周期）")
+                        Text("⑥軽い自発瞬目を5回（1秒周期）")
                             .font(.title2)
                             .frame(width: bodyView.size.width, alignment: .leading)
                             .padding(.top)
                             .padding(.bottom)
                         
-                        (Text("⑥質問（50秒）\n「あなたは上手く目を開けることができますか？」\n「自分の意思だけでできますか？」\n「目や顔、首を触ると開きやすいですか？"))
+                        (Text("⑦質問（50秒）\n「あなたは上手く目を開けることができますか？」\n「自分の意思だけでできますか？」\n「目や顔、首を触ると開きやすいですか？"))
                             .font(.title2)
                             .multilineTextAlignment(.leading)
                             .frame(width: bodyView.size.width, alignment: .leading)
                             .padding(.top)
                             .padding(.bottom)
                             
-                        (Text("⑦安静状態で")
+                        (Text("⑧安静状態で")
                         + Text("250秒間")
                             .underline(color: .white)
                         + Text("開瞼"))
@@ -87,16 +93,12 @@ struct HowToTakeBlink: View {
                             .padding(.bottom)
                         }
                         
-
                         Button(action: {
-                            self.user.isSendData = false //撮影済みを解除
-                            ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
-                            //self.presentationMode.wrappedValue.dismiss()
-                            self.goTakePhoto = true /*またはself.show.toggle() */
+                            self.presentationMode.wrappedValue.dismiss()
                         }) {
                             HStack{
-                                Image(systemName: "camera")
-                                Text("撮影")
+                                Image(systemName: "arrowshape.turn.up.backward")
+                                Text("戻る")
                             }
                                 .foregroundColor(Color.white)
                                 .font(Font.largeTitle)
@@ -104,9 +106,6 @@ struct HowToTakeBlink: View {
                             .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
                             .background(Color.black)
                             .padding()
-                        .sheet(isPresented: self.$goTakePhoto) {
-                            //CameraPage(user: user)
-                        }
                     }
                 }
             }

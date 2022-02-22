@@ -23,6 +23,8 @@
 		BF5E999727C47BA300C80A89 /* howToTakeRotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999627C47BA200C80A89 /* howToTakeRotate.swift */; };
 		BF5E999927C47BC400C80A89 /* howToTakeBlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999827C47BC400C80A89 /* howToTakeBlink.swift */; };
 		BF5E999B27C47E3200C80A89 /* Tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF5E999A27C47E3200C80A89 /* Tutorial.mp4 */; };
+		BF5E999D27C4942800C80A89 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999C27C4942800C80A89 /* CameraView.swift */; };
+		BF5E999F27C4945300C80A89 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999E27C4945300C80A89 /* SendData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,9 @@
 		BF5E999627C47BA200C80A89 /* howToTakeRotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = howToTakeRotate.swift; sourceTree = "<group>"; };
 		BF5E999827C47BC400C80A89 /* howToTakeBlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = howToTakeBlink.swift; sourceTree = "<group>"; };
 		BF5E999A27C47E3200C80A89 /* Tutorial.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tutorial.mp4; sourceTree = "<group>"; };
+		BF5E999C27C4942800C80A89 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		BF5E999E27C4945300C80A89 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
+		BF5E99A027C498DD00C80A89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +80,17 @@
 		BF5E997327C46B7500C80A89 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				BF5E99A027C498DD00C80A89 /* Info.plist */,
 				BF5E997427C46B7500C80A89 /* MovieAppApp.swift */,
 				BF5E998927C46DD400C80A89 /* Extension */,
 				BF5E998727C46D8C00C80A89 /* ImagePicker.swift */,
-				BF5E999427C479BF00C80A89 /* InformationView.swift */,
 				BF5E999A27C47E3200C80A89 /* Tutorial.mp4 */,
+				BF5E999427C479BF00C80A89 /* InformationView.swift */,
 				BF5E999627C47BA200C80A89 /* howToTakeRotate.swift */,
 				BF5E999827C47BC400C80A89 /* howToTakeBlink.swift */,
 				BF5E997627C46B7500C80A89 /* ContentView.swift */,
+				BF5E999C27C4942800C80A89 /* CameraView.swift */,
+				BF5E999E27C4945300C80A89 /* SendData.swift */,
 				BF5E997827C46B7700C80A89 /* Assets.xcassets */,
 				BF5E997D27C46B7700C80A89 /* Persistence.swift */,
 				BF5E997F27C46B7700C80A89 /* MovieApp.xcdatamodeld */,
@@ -183,8 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5E998B27C46DEA00C80A89 /* MovieCropper.swift in Sources */,
+				BF5E999D27C4942800C80A89 /* CameraView.swift in Sources */,
 				BF5E999527C479BF00C80A89 /* InformationView.swift in Sources */,
 				BF5E997E27C46B7700C80A89 /* Persistence.swift in Sources */,
+				BF5E999F27C4945300C80A89 /* SendData.swift in Sources */,
 				BF5E998D27C46E2B00C80A89 /* ResultHolder.swift in Sources */,
 				BF5E998827C46D8C00C80A89 /* ImagePicker.swift in Sources */,
 				BF5E998F27C46E6C00C80A89 /* ScanButton.swift in Sources */,
@@ -328,6 +338,15 @@
 				DEVELOPMENT_TEAM = FKLM5SV532;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -357,6 +376,15 @@
 				DEVELOPMENT_TEAM = FKLM5SV532;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

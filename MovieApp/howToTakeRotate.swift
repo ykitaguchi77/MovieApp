@@ -29,16 +29,15 @@ struct HowToTakeRotate: View {
                 VStack(spacing:0){
                     ScrollView{
                         Group{
-                        Text("撮影方法")
+                        Text("Rotate")
                             .font(.largeTitle)
                             .fontWeight(.black)
                             .padding(.bottom)
 
-                        Text("①楕円形のガイドに顔の輪郭を合わせます")
+                        Text("①楕円形のガイドに顔の輪郭を合わせる")
                             .font(.title2)
                             .frame(width: bodyView.size.width, alignment: .leading)
                             .padding(.bottom)
-
 
                         Text("②画面上部にあるカメラを固視")
                             .font(.title2)
@@ -81,14 +80,11 @@ struct HowToTakeRotate: View {
                         
 
                         Button(action: {
-                            self.user.isSendData = false //撮影済みを解除
-                            ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
-                            //self.presentationMode.wrappedValue.dismiss()
-                            self.goTakePhoto = true /*またはself.show.toggle() */
+                            self.presentationMode.wrappedValue.dismiss()
                         }) {
                             HStack{
-                                Image(systemName: "camera")
-                                Text("撮影")
+                                Image(systemName: "arrowshape.turn.up.backward")
+                                Text("戻る")
                             }
                                 .foregroundColor(Color.white)
                                 .font(Font.largeTitle)
@@ -96,9 +92,6 @@ struct HowToTakeRotate: View {
                             .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
                             .background(Color.black)
                             .padding()
-                        .sheet(isPresented: self.$goTakePhoto) {
-                            //CameraPage(user: user)
-                        }
                     }
                 }
             }

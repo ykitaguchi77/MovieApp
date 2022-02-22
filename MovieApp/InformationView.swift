@@ -18,7 +18,6 @@ struct Informations: View {
     var body: some View {
         NavigationView{
                 Form{
-                        Section(header: Text("基本情報"), footer: Text("")){
                             HStack{
                                 Text("入力日時")
                                 Text(self.user.date, style: .date)
@@ -60,7 +59,7 @@ struct Informations: View {
 
                             
                             HStack{
-                                Text("性別")
+                                Text("性別/病名")
                                 Picker(selection: $user.selected_gender,
                                            label: Text("性別")) {
                                     ForEach(0..<user.gender.count) {
@@ -72,11 +71,22 @@ struct Informations: View {
                                         }
                                     .pickerStyle(SegmentedPickerStyle())
                             }
-                        }
+                        
                     
                         
                     
-                        Section(header: Text("自由記載欄"), footer: Text("")){
+                            //Text("病名")
+                            Picker(selection: $user.selected_disease,
+                                       label: Text("性別")) {
+                                ForEach(0..<user.diseases.count) {
+                                    Text(self.user.diseases[$0])
+                                        }
+                                }
+                                .onChange(of: user.selected_gender) {_ in
+                                    self.user.isSendData = false
+                                    }
+                                .pickerStyle(SegmentedPickerStyle())
+                            
                             HStack{
                                 Text("自由記載欄")
                                 TextField("", text: $user.free_disease)
@@ -85,7 +95,7 @@ struct Informations: View {
                             .onChange(of: user.free_disease) { _ in
                             self.user.isSendData = false
                             }
-                        }
+                        
                     
                 }.navigationTitle("患者情報入力")
                 .onAppear(){
