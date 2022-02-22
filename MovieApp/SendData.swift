@@ -38,6 +38,8 @@ struct SendData: View {
                             }
                             Text("ID: \(self.user.id)")
                             Text("施設: \(self.user.hospitals[user.selected_hospital])")
+                            Text("病名: \(self.user.diseases[user.selected_disease])")
+                            Text("プロトコル: \(self.user.movieTypes[user.selected_movieType])")
                             Text("自由記載: \(self.user.free_disease)")
                         }
                     }
@@ -118,7 +120,7 @@ struct SendData: View {
     //ResultHolderにテキストデータを格納
     public func SaveToResultHolder(){
         //var imagenum: String = String(user.imageNum)
-        ResultHolder.GetInstance().SetAnswer(q1: self.stringDate(), q2: user.hashid, q3: user.id, q4: self.numToString(num: self.user.imageNum), q5: self.user.hospitals[user.selected_hospital], q6: self.user.diseases[user.selected_disease], q7: user.free_disease)
+        ResultHolder.GetInstance().SetAnswer(q1: self.stringDate(), q2: user.hashid, q3: user.id, q4: self.numToString(num: self.user.imageNum), q5: self.user.hospitals[user.selected_hospital], q6: self.user.diseases[user.selected_disease], q7: self.user.movieTypes[user.selected_movieType], q8: user.free_disease)
     }
     
     public func stringDate()->String{

@@ -20,13 +20,13 @@ class User : ObservableObject {
     @Published var hashid: String = ""
     @Published var selected_gender: Int = -1
     @Published var selected_hospital: Int = 0
-    @Published var selected_disease: Int = -1
-    @Published var movieType: Int = 0
+    @Published var selected_disease: Int = 0
+    @Published var selected_movieType: Int = 0
     @Published var free_disease: String = ""
     @Published var gender: [String] = ["男", "女"]
-    @Published var diseases: [String] = ["正常", "甲状腺眼症", "眼瞼痙攣"]
     @Published var hospitals: [String] = ["", "大阪大"]
-    @Published var selected_movieType: [String] = ["", "Rotating", "Blinking"]
+    @Published var diseases: [String] = ["", "正常", "甲状腺眼症", "眼瞼痙攣"]
+    @Published var movieTypes: [String] = ["", "Rotating", "Blinking"]
     @Published var imageNum: Int = 0 //写真の枚数（何枚目の撮影か）
     @Published var isNewData: Bool = false
     @Published var isSendData: Bool = false
@@ -81,6 +81,7 @@ struct ContentView: View {
                 
                 Button(action: {
                     self.goTakePhoto = true /*またはself.show.toggle() */
+                    self.user.selected_movieType = 1
                     self.user.isSendData = false //撮影済みを解除
                     ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
                 }) {
@@ -100,6 +101,7 @@ struct ContentView: View {
                 
                 Button(action: {
                     self.goTakePhoto = true /*またはself.show.toggle() */
+                    self.user.selected_movieType = 2
                     self.user.isSendData = false //撮影済みを解除
                     ResultHolder.GetInstance().SetMovieUrls(Url: "")  //動画の保存先をクリア
                 }) {
@@ -205,7 +207,9 @@ struct ContentView: View {
                     //データの初期化
                     self.user.date = Date()
                     self.user.id = ""
+                    self.user.hashid = ""
                     self.user.imageNum = 0
+                    self.user.age = -1
                     self.user.selected_hospital = -1
                     self.user.selected_disease = -1
                     self.user.free_disease = ""

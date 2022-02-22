@@ -76,16 +76,17 @@ class ResultHolder{
 //    }
 //    
     
-    private (set) public var Answers: [String:String] = ["q1":"", "q2":"", "q3":"", "q4":"", "q5": "", "q6": "", "q7": ""]
+    private (set) public var Answers: [String:String] = ["q1":"", "q2":"", "q3":"", "q4":"", "q5": "", "q6": "", "q7": "", "q8": ""]
 
-    public func SetAnswer(q1:String, q2:String, q3:String, q4:String, q5:String, q6:String, q7:String){
+    public func SetAnswer(q1:String, q2:String, q3:String, q4:String, q5:String, q6:String, q7:String, q8:String){
         Answers["q1"] = q1 //date
         Answers["q2"] = q2 //hashID
         Answers["q3"] = q3 //ID
         Answers["q4"] = q4 //imgNum
         Answers["q5"] = q5 //hospital
-        Answers["q5"] = q6 //disease
-        Answers["q6"] = q7 //free
+        Answers["q6"] = q6 //disease
+        Answers["q7"] = q7 //protocol
+        Answers["q8"] = q8 //free
     }
 
     public func GetAnswerJson() -> String{
@@ -97,6 +98,7 @@ class ResultHolder{
         data.pq5 = Answers["q5"] ?? ""
         data.pq6 = Answers["q6"] ?? ""
         data.pq7 = Answers["q7"] ?? ""
+        data.pq8 = Answers["q8"] ?? ""
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .sortedKeys
         let jsonData = (try? jsonEncoder.encode(data)) ?? Data()
@@ -117,4 +119,5 @@ class QuestionAnswerData: Codable{
     var pq5 = ""
     var pq6 = ""
     var pq7 = ""
+    var pq8 = ""
 }
