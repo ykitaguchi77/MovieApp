@@ -42,6 +42,7 @@ struct ContentView: View {
     @State private var goBlink: Bool = false  //送信ボタン
     @State private var savedData: Bool = false  //送信ボタン
     @State private var newPatient: Bool = false  //送信ボタン
+    @State private var goSearch: Bool = false  //検索ボタン
     
     
     var body: some View {
@@ -65,12 +66,12 @@ struct ContentView: View {
                     Image(systemName: "info.circle")
                     Text("患者情報入力")
                 }
-                    .foregroundColor(Color.white)
-                    .font(Font.largeTitle)
+                .foregroundColor(Color.white)
+                .font(Font.largeTitle)
             }
-                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                .background(Color.black)
-                .padding()
+            .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+            .background(Color.black)
+            .padding()
             .sheet(isPresented: self.$isPatientInfo) {
                 Informations(user: user)
                 //こう書いておかないとmissing as ancestorエラーが時々でる
@@ -89,14 +90,14 @@ struct ContentView: View {
                         Image(systemName: "eye.circle")
                         Text("Rotate")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.largeTitle)
+                    .foregroundColor(Color.white)
+                    .font(Font.largeTitle)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.black)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.black)
+                .padding()
                 .sheet(isPresented: self.$goTakePhoto) {
-                        CameraPage(user: user)
+                    CameraPage(user: user)
                 }
                 
                 Button(action: {
@@ -109,12 +110,12 @@ struct ContentView: View {
                         Image(systemName: "eyebrow")
                         Text("Blink")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.largeTitle)
+                    .foregroundColor(Color.white)
+                    .font(Font.largeTitle)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.black)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.black)
+                .padding()
                 .sheet(isPresented: self.$goTakePhoto) {
                     CameraPage(user: user)
                 }
@@ -131,12 +132,12 @@ struct ContentView: View {
                         Image(systemName: "questionmark.circle")
                         Text("撮影方法")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.body)
+                    .foregroundColor(Color.white)
+                    .font(Font.body)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.black)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.black)
+                .padding()
                 .sheet(isPresented: self.$goRotate) {
                     HowToTakeRotate(user: user)
                 }
@@ -150,12 +151,12 @@ struct ContentView: View {
                         Image(systemName: "questionmark.circle")
                         Text("撮影方法")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.body)
+                    .foregroundColor(Color.white)
+                    .font(Font.body)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.black)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.black)
+                .padding()
                 .sheet(isPresented: self.$goBlink) {
                     HowToTakeBlink(user: user)
                 }
@@ -168,12 +169,12 @@ struct ContentView: View {
                         Image(systemName: "square.and.arrow.up")
                         Text("送信済み")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.largeTitle)
+                    .foregroundColor(Color.white)
+                    .font(Font.largeTitle)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.blue)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.blue)
+                .padding()
                 .sheet(isPresented: self.$goSendData) {
                     SendData(user: user)
                 }
@@ -183,45 +184,66 @@ struct ContentView: View {
                         Image(systemName: "square.and.arrow.up")
                         Text("送信")
                     }
-                        .foregroundColor(Color.white)
-                        .font(Font.largeTitle)
+                    .foregroundColor(Color.white)
+                    .font(Font.largeTitle)
                 }
-                    .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
-                    .background(Color.black)
-                    .padding()
+                .frame(minWidth:0, maxWidth:CGFloat.infinity, minHeight: 75)
+                .background(Color.black)
+                .padding()
                 .sheet(isPresented: self.$goSendData) {
                     SendData(user: user)
                 }
             }
             
-            Button(action: { self.newPatient = true /*またはself.show.toggle() */ }) {
-                HStack{
-                    Image(systemName: "stop.circle")
-                    Text("次患者")
-                }
+            HStack{
+                Button(action: { self.newPatient = true /*またはself.show.toggle() */ }) {
+                    HStack{
+                        Image(systemName: "stop.circle")
+                        Text("次患者")
+                    }
                     .foregroundColor(Color.white)
                     .font(Font.largeTitle)
-            }
-            .alert(isPresented:$newPatient){
-                Alert(title: Text("データをクリアしますか？"), primaryButton:.default(Text("はい"),action:{
-                    //データの初期化
-                    self.user.date = Date()
-                    self.user.id = ""
-                    self.user.hashid = ""
-                    self.user.imageNum = 0
-                    self.user.age = -1
-                    self.user.selected_hospital = -1
-                    self.user.selected_disease = -1
-                    self.user.free_disease = ""
-                    self.user.isSendData = false
-                    
-                }),
-                      secondaryButton:.destructive(Text("いいえ"), action:{}))
+                }
+                .alert(isPresented:$newPatient){
+                    Alert(title: Text("データをクリアしますか？"), primaryButton:.default(Text("はい"),action:{
+                        //データの初期化
+                        self.user.date = Date()
+                        self.user.id = ""
+                        self.user.hashid = ""
+                        self.user.age = -1
+                        self.user.selected_gender = -1
+                        self.user.imageNum = 0
+                        self.user.age = -1
+                        self.user.selected_hospital = -1
+                        self.user.selected_disease = -1
+                        self.user.selected_movieType = 0
+                        self.user.free_disease = ""
+                        self.user.isSendData = false
+                        
+        
+                    }),
+                          secondaryButton:.destructive(Text("いいえ"), action:{}))
                 }
                 .frame(minWidth:0, maxWidth:200, minHeight: 75)
                 .background(Color.black)
                 .padding()
+                
+                
+                Button(action: {self.goSearch = true /*またはself.show.toggle() */}) {
+                    HStack{
+                        Image(systemName: "applepencil")
+                        Text("修正")
+                    }
+                    .foregroundColor(Color.white)
+                    .font(Font.largeTitle)
+                }
+                .frame(minWidth:0, maxWidth:160, minHeight: 75)
+                .background(Color.black)
+                .padding()
+                .sheet(isPresented: self.$goSearch) {
+                    Search(user: user)
+                }
             }
-        
+        }
     }
 }

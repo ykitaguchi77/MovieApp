@@ -24,6 +24,7 @@
 		BF5E999B27C47E3200C80A89 /* Tutorial.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BF5E999A27C47E3200C80A89 /* Tutorial.mp4 */; };
 		BF5E999D27C4942800C80A89 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999C27C4942800C80A89 /* CameraView.swift */; };
 		BF5E999F27C4945300C80A89 /* SendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E999E27C4945300C80A89 /* SendData.swift */; };
+		BF652ED728D89CA400E42A69 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF652ED628D89CA400E42A69 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		BF5E999C27C4942800C80A89 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		BF5E999E27C4945300C80A89 /* SendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendData.swift; sourceTree = "<group>"; };
 		BF5E99A027C498DD00C80A89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BF652ED628D89CA400E42A69 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				BF5E999627C47BA200C80A89 /* howToTakeRotate.swift */,
 				BF5E999827C47BC400C80A89 /* howToTakeBlink.swift */,
 				BF5E997627C46B7500C80A89 /* ContentView.swift */,
+				BF652ED628D89CA400E42A69 /* SearchView.swift */,
 				BF5E999C27C4942800C80A89 /* CameraView.swift */,
 				BF5E999E27C4945300C80A89 /* SendData.swift */,
 				BF5E997827C46B7700C80A89 /* Assets.xcassets */,
@@ -197,6 +200,7 @@
 				BF5E999327C4704F00C80A89 /* ConstHolder.swift in Sources */,
 				BF5E999127C46E9D00C80A89 /* UIImageExtension.swift in Sources */,
 				BF5E997727C46B7500C80A89 /* ContentView.swift in Sources */,
+				BF652ED728D89CA400E42A69 /* SearchView.swift in Sources */,
 				BF5E998127C46B7700C80A89 /* MovieApp.xcdatamodeld in Sources */,
 				BF5E999927C47BC400C80A89 /* howToTakeBlink.swift in Sources */,
 				BF5E999727C47BA300C80A89 /* howToTakeRotate.swift in Sources */,
